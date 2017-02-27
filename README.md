@@ -1,5 +1,5 @@
 # Big Data Environment Setup (vagrant-virtualbox)
-This project aims for building scripts for being set up the environments of the big data analytics with the technologies including hadoop, yarn, hive, spark and so on.
+This project aims for building scripts for setting up the environments of the big data analytics with the technologies including hadoop, yarn, hive, spark and so on.
 
 # Install Vagrant and Virtual Box
 This project uses vagrant and virtualbox for making the environment setup and configuration automated and portable which makes the project easily maintainable.
