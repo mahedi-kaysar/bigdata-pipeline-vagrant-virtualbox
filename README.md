@@ -7,19 +7,18 @@ This project uses vagrant and virtualbox for making the environment setup and co
 # Initialize vagrant and configure virtualbox 
 This project chooses widely used linux platfrom CentOS. For finds the ContOS virtual box please check the listing here (http://www.vagrantbox.es/).
 
-	1) downlaod the virtual box in your workspace
-	vagrant box add centos65 https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box
+	1) downlaod the virtualbox image in your workspace:
+	$ vagrant box add centos65 https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box
 
-	2) initialise vagrant
-	vagrant init
-	
-	3) start the VM	
-	vagrant up
+	2) initialise vagrant:
+	$ vagrant init
+
+	3) start the VM:
+	$ vagrant up
 
 # Write scripts for installing and configuring hadoop 
 	(a) please visit the hadoop scripts
 	(b) please visit the start-hadoop scripts
-
 
 # CentOS commands (basics)
 yum, cp, mv, rm, rmdir, ps, mkdir, cat, 
