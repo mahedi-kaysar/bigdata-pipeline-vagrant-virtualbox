@@ -25,9 +25,7 @@ function installPig {
 function setupPig {
 	echo "setup Pig"
 	cp -f $PIG_RES_DIR/* /usr/local/pig/conf
-	#mkdir
-	#cp -f /vagrant/resources/pig/slaves /usr/local/pig/conf
-	#cp -f /vagrant/resources/pig/pig-env.sh /usr/local/pig/conf
+	hdfs dfs -chown vagrant /user/pig
 }
 
 function setupEnvVars {

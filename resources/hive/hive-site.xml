@@ -13,4 +13,14 @@
         <value>jdbc:derby:;databaseName=/usr/local/hive/derby/metastore_db;create=true</value>
         <description>JDBC connect string for a JDBC metastore</description>
     </property>
+    <property>
+        <name>hive.exec.reducers.bytes.per.reducer</name>
+        <value>1</value>
+        <description>average load for a reducer (in bytes)</description>
+    </property>
+     <property>
+        <name>hive.exec.reducers.max</name>
+        <value>1</value>
+        <description>constant number of reducers</description>
+    </property>
 </configuration>

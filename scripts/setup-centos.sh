@@ -47,6 +47,7 @@ function setupUtilities {
     yum install -y mlocate
     updatedb
     yum install 
+    yum -y install wget
 }
 
 echo "setup centos"
@@ -57,7 +58,7 @@ setupHosts
 
 echo "setup ssh"
 intallSSHSERVERCLINET
-installSSHPass
+#installSSHPass
 createSSHKey
 overwriteSSHCopyId
 

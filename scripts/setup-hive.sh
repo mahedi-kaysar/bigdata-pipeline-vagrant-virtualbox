@@ -29,6 +29,8 @@ function installHive {
 function setupHive {
 	echo "copying over hive configuration file"
 	cp -f $HIVE_RES_DIR/* $HIVE_CONF
+	hdfs dfs -mkdir -p /user/hive
+	hdfs dfs -chown vagrant /user/hive
 }
 
 function setupEnvVars {

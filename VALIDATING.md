@@ -81,3 +81,51 @@ Run word count in Spark.
 run clickstrem.sh
 
  spark-submit --class org.mahedi.clickstream.ClickStream --master spark://10.211.55.101:7077 /vagrant/sources/clickstream/jar/clickstream-spark-0.0.1-SNAPSHOT.jar hdfs://10.211.55.101/user/root/clickstream-input/msnbc990928.seq
+
+# Test stackexchange assignment
+run stackexchange.sh
+
+    CREATE EXTERNAL TABLE Posts (
+        Id STRING,
+        PostTypeId STRING,
+        AcceptedAnswerId STRING,
+        CreationDate STRING,
+        Score INT,
+        ViewCount INT,
+        Body STRING,
+        OwnerUserId STRING,
+        LastEditorUserId STRING,
+        LastEditDate STRING,
+        LastActivityDate STRING,
+        Title STRING,
+        Tags STRING,
+        AnswerCount INT,
+        CommentCount INT,
+        FavoriteCount INT
+    )
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+    LOCATION '/user/root/stackexchange-input';
+
+    1) The top 10 posts by score
+    select id, score, title from posts order by score desc limit 10;
+    2) The top 10 users by post score
+    select owneruserid, sum(viewcount) as viewc from posts GROUP BY owneruserid order by viewc desc limit 10;
+    3) The number of distinct users, who used the word ‘hadoop’ in one of their posts
+    select distinct owneruserid from posts where instr(body, 'php')!=0;
+
+
+# pig checking
+
+## install pig
+wget http://mirror.ox.ac.uk/sites/rsync.apache.org/pig/pig-0.15.0/pig-0.15.0.tar.gz
+tar -xzf pig-0.15.0.tar.gz -C /usr/local/
+ln -s /usr/local/pig-0.15.0/ /usr/local/pig
+vi /etc/profile
+export PATH=$PATH:/usr/local/pig/bin
+source /etc/profile
+
+hdfs dfs -ls pigexample-input
+hdfs dfs -copyFromLocal customers.txt pigexample-input
+pig
+customers = LOAD 'hdfs://10.211.55.101/user/root/pigexample-input/customers.txt' USING PigStorage(',');
+DUMP customers;
